@@ -79,13 +79,30 @@ public:
     {
         cout << "Length: " << length << endl;
     }
-    
+
+    void append(int value)
+    {
+        Node *newNode = new Node(value);
+        if (length == 0)
+        {
+            tail = newNode;
+            head = newNode;
+        } else
+        {
+            tail->next = newNode;
+            tail = newNode;
+        }
+        length++;
+    }
 };
 
 int main()
 {
 
     LinkedList *myLinkedList = new LinkedList(4);
+
+
+    myLinkedList->append(2);
 
     myLinkedList->getHead();
     myLinkedList->getTail();
