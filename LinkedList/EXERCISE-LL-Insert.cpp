@@ -225,9 +225,7 @@ int main()
     myLinkedList->deleteFirst();
     myLinkedList->deleteFirst();
 
-    myLinkedList->getHead();
-    myLinkedList->getTail();
-    myLinkedList->getLength();
+
 
 
 
@@ -244,9 +242,15 @@ int main()
     cout << "Get: " << 2 << "-" << myLinkedList->get(2)->value << endl;
 
     myLinkedList->insert(3,25);
+    myLinkedList->insert(6,65);
+    myLinkedList->insert(8,8);
 
     cout << "\nLinked List:\n";
     myLinkedList->printList();
+
+    myLinkedList->getHead();
+    myLinkedList->getTail();
+    myLinkedList->getLength();
 
     /*
         EXPECTED OUTPUT:
