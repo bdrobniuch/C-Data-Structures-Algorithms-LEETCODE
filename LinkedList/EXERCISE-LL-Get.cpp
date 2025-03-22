@@ -181,7 +181,13 @@ int main()
     cout << "\nLinked List:\n";
     myLinkedList->printList();
 
+    cout << "Get: " << 1 << "-" <<myLinkedList->get(1)->value << endl;
+
     cout << "Get: " << 2 << "-" <<myLinkedList->get(2)->value << endl;
+
+    cout << "Get: " << 3 << "-" <<myLinkedList->get(3)->value << endl;
+
+    cout << "Get: " << -1 << "-" <<myLinkedList->get(-2)->value << endl;
 
     /*
         EXPECTED OUTPUT:
