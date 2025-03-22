@@ -186,7 +186,7 @@ public:
             return false;
         }
         // A B C
-        Node* temp = new Node(value);
+
         if (index == 0)
         {
             
