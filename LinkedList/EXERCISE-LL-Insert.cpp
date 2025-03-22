@@ -181,16 +181,21 @@ public:
 
     bool insert(int index, int value)
     {
+        if (index < 0 || index > length)
+        {
+            return false;
+        }
         // A B C
         Node* temp = new Node(value);
         if (index == 0)
         {
             
-            temp->next = head;
-            head = temp;
-            length++;
+            prepend(value);
             return true;
-        } else if (index > 0) {
+        } else if (index == length) {
+            append(value);
+            return true;
+        } else {
             
             Node* prev = get(index-1);
             if (prev) {
