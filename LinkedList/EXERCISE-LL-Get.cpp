@@ -143,18 +143,19 @@ public:
         }
     }
 
-    int get(int index) {
-        if (index<length) {
+    Node* get(int index) {
+        if (index < 0 || index >= length  ) {
+            return nullptr;
+        }
+   
             int i = index;
             Node* temp = head;
             while (i) {
                 temp= temp->next;
                 i--;
             }
-            return temp->value;
-        } else {
-            return 0;
-        }
+            return temp;
+        
     }
 };
 
@@ -180,7 +181,7 @@ int main()
     cout << "\nLinked List:\n";
     myLinkedList->printList();
 
-    cout << "Get: " << 2 << "-" <<myLinkedList->get(2) << endl;
+    cout << "Get: " << 2 << "-" <<myLinkedList->get(2)->value << endl;
 
     /*
         EXPECTED OUTPUT:
