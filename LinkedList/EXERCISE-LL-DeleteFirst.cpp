@@ -135,7 +135,10 @@ public:
             Node* temp;
             temp = head;
             head = temp->next;
-            delete(head);
+            delete(temp);
+            if (!head) {
+                tail= head;
+            }
             length--;
         }
     }
@@ -153,6 +156,10 @@ int main()
     myLinkedList->append(5);
     myLinkedList->deleteLast();
     myLinkedList->prepend(0);
+    myLinkedList->deleteFirst();
+    myLinkedList->deleteFirst();
+
+    myLinkedList->deleteFirst();
     myLinkedList->deleteFirst();
     myLinkedList->deleteFirst();
 
