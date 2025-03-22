@@ -173,16 +173,14 @@ int main()
     myLinkedList->deleteFirst();
     myLinkedList->deleteFirst();
 
-    myLinkedList->deleteFirst();
-    myLinkedList->deleteFirst();
-    myLinkedList->deleteFirst();
-
     myLinkedList->getHead();
     myLinkedList->getTail();
     myLinkedList->getLength();
 
     cout << "\nLinked List:\n";
     myLinkedList->printList();
+
+    cout << "Get: " << 2 << "-" <<myLinkedList->get(2) << endl;
 
     /*
         EXPECTED OUTPUT:
