@@ -87,7 +87,8 @@ public:
         {
             tail = newNode;
             head = newNode;
-        } else
+        }
+        else
         {
             tail->next = newNode;
             tail = newNode;
@@ -96,80 +97,86 @@ public:
     }
 
     void deleteLast()
-    { //A->B->C->D
-        if (length > 1) 
+    { // A->B->C->D
+        if (length > 1)
         {
-            Node* i = head;
-            while (i->next->next != nullptr) {
+            Node *i = head;
+            while (i->next->next != nullptr)
+            {
                 i = i->next;
             }
             delete tail;
             tail = i;
             length--;
             i->next = nullptr;
-            
-        } else if (length == 1) {
+        }
+        else if (length == 1)
+        {
             delete head;
             head = nullptr;
             tail = nullptr;
             length = 0;
-
         }
     }
 
-    void prepend(int value) {
-            Node* temp = new Node(value);
-        if (length==0) {
+    void prepend(int value)
+    {
+        Node *temp = new Node(value);
+        if (length == 0)
+        {
             head = temp;
             tail = temp;
             length = 1;
-        } else {
-            temp->next= head;
-            head=temp;
+        }
+        else
+        {
+            temp->next = head;
+            head = temp;
             length++;
         }
     }
 
-    void deleteFirst() {
-        if (length > 0) {
-            Node* temp;
+    void deleteFirst()
+    {
+        if (length > 0)
+        {
+            Node *temp;
             temp = head;
             head = temp->next;
-            delete(temp);
-            if (!head) {
-                tail= head;
+            delete (temp);
+            if (!head)
+            {
+                tail = head;
             }
             length--;
         }
     }
 
-    Node* get(int index) {
-        if (index < 0 || index >= length  ) {
+    Node *get(int index)
+    {
+        if (index < 0 || index >= length)
+        {
             return nullptr;
         }
-   
-            int i = index;
-            Node* temp = head;
-            while (i) {
-                temp= temp->next;
-                i--;
-            }
-            return temp;
-        
-    }
 
-    void set(int index, int value) {
-        if (index < 0 || index >= length  ) {
-            return;
-        }
-
-        Node* temp = head;
-
-        for (int i=0; i<index; i++) {
+        int i = index;
+        Node *temp = head;
+        for (int i = 0; i < index; i++)
+        {
             temp = temp->next;
         }
+        return temp;
+    }
 
-        temp->value = value;
+    bool set(int index, int value)
+    {
+        Node *temp = get(index);
+        if (temp)
+        {
+            temp->value = value;
+            return true;
+        }
+        return false;
     }
 };
 
@@ -177,7 +184,6 @@ int main()
 {
 
     LinkedList *myLinkedList = new LinkedList(1);
-
 
     myLinkedList->append(2);
     myLinkedList->append(3);
@@ -195,22 +201,21 @@ int main()
     cout << "\nLinked List:\n";
     myLinkedList->printList();
 
+    myLinkedList->set(1, 10);
 
-    myLinkedList->set(1,10);
+    myLinkedList->set(2, 20);
 
-    myLinkedList->set(2,20);
+    myLinkedList->set(3, 30);
 
-    myLinkedList->set(3,30);
+    myLinkedList->set(-2, 20);
 
-    myLinkedList->set(-2,20);
+    cout << "Get: " << 1 << "-" << myLinkedList->get(1)->value << endl;
 
-    cout << "Get: " << 1 << "-" <<myLinkedList->get(1)->value << endl;
+    cout << "Get: " << 2 << "-" << myLinkedList->get(2)->value << endl;
 
-    cout << "Get: " << 2 << "-" <<myLinkedList->get(2)->value << endl;
+    cout << "Get: " << 3 << "-" << myLinkedList->get(3)->value << endl;
 
-    cout << "Get: " << 3 << "-" <<myLinkedList->get(3)->value << endl;
-
-    cout << "Get: " << -1 << "-" <<myLinkedList->get(-2)->value << endl;
+    cout << "Get: " << -1 << "-" << myLinkedList->get(-2)->value << endl;
 
     /*
         EXPECTED OUTPUT:
