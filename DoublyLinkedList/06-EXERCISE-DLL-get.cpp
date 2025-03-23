@@ -103,45 +103,60 @@ public:
         if (length == 0)
         {
 
-            tail= newNode;
+            tail = newNode;
         }
         else
         {
             head->prev = newNode;
             newNode->next = head;
-            
         }
         head = newNode;
         length++;
     }
 
-    void deleteFirt() {
-        if (length==0) return;
-        if (length==1) {
-            delete(head);
+    void deleteFirt()
+    {
+        if (length == 0)
+            return;
+        if (length == 1)
+        {
+            delete (head);
             head = nullptr;
             tail = nullptr;
             length = 0;
-        } else {
+        }
+        else
+        {
             head = head->next;
-            delete(head->prev);
-            head->prev= nullptr;
+            delete (head->prev);
+            head->prev = nullptr;
             length--;
         }
-
     }
 
-    Node* get(int index) {
-        Node* temp = head;
-        for (int i=0; i<index; i++)
+    Node *get(int index)
+    {
+        Node *temp;
+        if (index < length / 2)
         {
-            if (temp) 
-                temp = temp->next;
+            temp = head;
+            for (int i = 0; i < index; i++)
+            {
+                if (temp)
+                    temp = temp->next;
+            }
+        } else
+        {
+            temp = tail;
+            for (int i = 0; i < length-index-1; i++)
+            {
+                if (temp)
+                    temp = temp->prev;
+            }           
         }
 
         return temp;
     }
-
 };
 
 int main()
@@ -150,6 +165,7 @@ int main()
     myDLL->append(2);
     myDLL->append(3);
     myDLL->append(4);
+    myDLL->append(5);
     myDLL->deleteLast();
     myDLL->prepend(0);
     myDLL->prepend(7);
@@ -157,9 +173,9 @@ int main()
     myDLL->deleteFirt();
     myDLL->deleteFirt();
 
-    cout << "Get: " << myDLL->get(0)->value << endl;
+    cout << "Get: " << myDLL->get(1)->value << endl;
     cout << "Get: " << myDLL->get(3)->value << endl;
-    //cout << "Get: " << myDLL->get(17)->value << endl;
+    // cout << "Get: " << myDLL->get(17)->value << endl;
 
     myDLL->printList();
 }
