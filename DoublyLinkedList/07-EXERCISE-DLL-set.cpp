@@ -136,6 +136,8 @@ public:
 
     Node *get(int index)
     {
+        if (index < 0 || index >= length)
+            return nullptr;
         Node *temp;
         if (index < length / 2)
         {
@@ -145,14 +147,15 @@ public:
                 if (temp)
                     temp = temp->next;
             }
-        } else
+        }
+        else
         {
             temp = tail;
-            for (int i = 0; i < length-index-1; i++)
+            for (int i = 0; i < length - index - 1; i++)
             {
                 if (temp)
                     temp = temp->prev;
-            }           
+            }
         }
 
         return temp;
@@ -160,28 +163,14 @@ public:
 
     bool set(int index, int value)
     {
-        if (index < 0 || index >= length) return false;
-        Node* temp;
 
-        if (index < length / 2)
+        Node *temp = get(index);
+        if (temp)
         {
-            temp = head;
-            for (int i = 0; i < index; i++)
-            {
-                if (temp)
-                    temp = temp->next;
-            }
-        } else
-        {
-            temp = tail;
-            for (int i = length-1; i>index; i--)
-            {
-                if (temp)
-                    temp = temp->prev;
-            }           
+            temp->value = value;
+            return true;
         }
-        temp->value = value;
-        return true;
+        return false;
     }
 };
 
@@ -203,7 +192,7 @@ int main()
     cout << "Get: " << myDLL->get(3)->value << endl;
 
     myDLL->set(1, 10);
-    myDLL->set(3,30);
+    myDLL->set(3, 30);
     cout << "Get: " << myDLL->get(1)->value << endl;
     cout << "Get: " << myDLL->get(3)->value << endl;
     // cout << "Get: " << myDLL->get(17)->value << endl;
