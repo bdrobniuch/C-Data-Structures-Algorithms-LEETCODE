@@ -39,10 +39,17 @@ public:
             current = current->next;
         }
     }
+
+    void push(int value) {
+        Node* newNode = new Node(value);
+        newNode->next = top;
+        top= newNode;
+    }
 };
 
 int main() {
     Stack* myStack = new Stack(1);
-
+    myStack->push(2);
+    myStack->push(3);
     myStack->printStack();
 }
