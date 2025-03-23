@@ -87,19 +87,30 @@ public:
             head = nullptr;
             tail = nullptr;
             length = 0;
-        } else {
+        }
+        else
+        {
             tail = tail->prev;
             delete (tail->next);
             tail->next = nullptr;
             length--;
-            
         }
     }
 
-    void prepend(int value) {
-        Node* newNode = new Node(value);
-        head->prev = newNode;
-        newNode->next= head;
+    void prepend(int value)
+    {
+        Node *newNode = new Node(value);
+        if (length == 0)
+        {
+
+            tail= newNode;
+        }
+        else
+        {
+            head->prev = newNode;
+            newNode->next = head;
+            
+        }
         head = newNode;
         length++;
     }
