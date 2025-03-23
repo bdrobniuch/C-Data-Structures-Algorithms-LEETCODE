@@ -58,22 +58,29 @@ public:
         cout << "Head: " << length << endl;
     }
 
-    void append(int value) {
-        
+    void append(int value)
+    {
 
-        Node* newNode = new Node(value);
+        Node *newNode = new Node(value);
 
-        newNode->prev= tail;
-        tail->next = newNode;
-        tail= newNode;
+        if (length == 0)
+        {
+            head = newNode;
+            tail = newNode;
+        }
+        else
+        {
+            newNode->prev = tail;
+            tail->next = newNode;
+            tail = newNode;
+        }
         length++;
-
     }
-
 };
 
-int main () {
-    DoublyLinkedList* myDLL = new DoublyLinkedList(1);
+int main()
+{
+    DoublyLinkedList *myDLL = new DoublyLinkedList(1);
     myDLL->append(2);
     myDLL->printList();
 }
