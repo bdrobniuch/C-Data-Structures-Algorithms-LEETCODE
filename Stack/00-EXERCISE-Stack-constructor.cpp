@@ -46,11 +46,23 @@ public:
         top= newNode;
         height++;
     }
+
+    int pop() {
+        if (!top) return INT_MIN;
+        Node* oldTop = top;
+        int ret = top->value;
+        top = top->next;
+        delete top;
+        return ret;
+    }
 };
 
 int main() {
     Stack* myStack = new Stack(1);
     myStack->push(2);
     myStack->push(3);
+    myStack->push(4);
+    myStack->push(5);
+    myStack->pop();
     myStack->printStack();
 }
