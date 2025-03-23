@@ -114,7 +114,7 @@ public:
         length++;
     }
 
-    void deleteFirt()
+    void deleteFirst()
     {
         if (length == 0)
             return;
@@ -185,8 +185,8 @@ int main()
     myDLL->prepend(0);
     myDLL->prepend(7);
     myDLL->prepend(7);
-    myDLL->deleteFirt();
-    myDLL->deleteFirt();
+    myDLL->deleteFirst();
+    myDLL->deleteFirst();
 
     cout << "Get: " << myDLL->get(1)->value << endl;
     cout << "Get: " << myDLL->get(3)->value << endl;

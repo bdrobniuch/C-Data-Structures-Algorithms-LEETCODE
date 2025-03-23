@@ -55,7 +55,7 @@ public:
 
     void getLength()
     {
-        cout << "Head: " << length << endl;
+        cout << "Length: " << length << endl;
     }
 
     void append(int value)
@@ -175,41 +175,47 @@ public:
 
     bool insert(int index, int value)
     {
-        if (length == 0 && index == 0)
-        {
-            Node *newNode = new Node(value);
-            head = newNode;
-            tail = newNode;
-            length = 1;
-        } if (index == length) {
-            Node *newNode = new Node(value);
-            tail->prev->next = newNode;
-            newNode->prev= tail->prev;
-            tail = newNode;
-            length++;
-        } else
-        {
-            Node *temp = get(index);
-
-            if (temp)
-            {
-                Node *newNode = new Node(value);
-                if (index > 0)
-                {
-                    temp->prev->next = newNode;
-                    newNode->prev = temp->prev;
-                    temp->prev = newNode;
-                }
-                newNode->next = temp;
-                if (index == 0)
-                    head = newNode;
-                if (index == length - 1)
-                    tail = newNode;
-                length++;
-                return true;
-            }
+        if (index<0 || index > length) return false;
+        if (index==0) {
+            prepend(value);
+            return true;
         }
-        return false;
+        if (index== length) {
+            append(value);
+            return true;
+        }
+        Node* prev = get(index);
+        Node* next = prev->next;
+        Node* newNode = new Node(value);
+        prev->next= newNode;
+        next->prev= newNode;
+        newNode->next=next;
+        newNode->prev=prev;
+        length++;
+        return true;
+    }
+
+    void deleteNode(int index) {
+        if (length==0) return;
+        if (index<0 || index>= length) return;
+        if (index==0) 
+        {
+            deleteFirst();
+            return;
+        }
+        if (index== length-1) {
+            deleteLast();
+            return;
+        }
+
+        Node* temp = get(index);
+        Node* prev = temp->prev;
+        Node* next = temp->next;
+        prev->next= next;
+        next->prev= prev;
+        delete (temp);
+        length--;
+
     }
 };
 
@@ -220,12 +226,14 @@ int main()
     myDLL->append(3);
     myDLL->append(4);
     myDLL->append(5);
+    
     myDLL->deleteLast();
     myDLL->prepend(0);
     myDLL->prepend(7);
     myDLL->prepend(7);
     myDLL->deleteFirst();
     myDLL->deleteFirst();
+
 
     cout << "Get: " << myDLL->get(1)->value << endl;
     cout << "Get: " << myDLL->get(3)->value << endl;
@@ -239,7 +247,19 @@ int main()
     myDLL->insert(4, 35);
     myDLL->insert(0, 100);
     myDLL->insert(8, 800);
+
+   
     // cout << "Get: " << myDLL->get(17)->value << endl;
 
     myDLL->printList();
+    myDLL->getLength();
+
+    myDLL->deleteNode(3);
+    myDLL->printList();
+    myDLL->deleteNode(6);
+    myDLL->printList();
+    myDLL->getLength();
+
+        myDLL->deleteNode(0);
+        myDLL->printList();
 }

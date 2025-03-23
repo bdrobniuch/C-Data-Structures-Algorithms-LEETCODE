@@ -115,7 +115,7 @@ public:
         length++;
     }
 
-    void deleteFirt() {
+    void deleteFirst() {
         if (length==0) return;
         if (length==1) {
             delete(head);
@@ -142,7 +142,7 @@ int main()
     myDLL->prepend(0);
     myDLL->prepend(7);
     myDLL->prepend(7);
-    myDLL->deleteFirt();
-    myDLL->deleteFirt();
+    myDLL->deleteFirst();
+    myDLL->deleteFirst();
     myDLL->printList();
 }
