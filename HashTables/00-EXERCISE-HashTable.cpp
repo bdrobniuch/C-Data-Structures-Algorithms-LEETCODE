@@ -56,6 +56,17 @@ public:
         }
     }
 
+    int get(string key) {
+        int index = hash(key);
+        Node* temp = dataMap[index];
+
+        while (temp) {
+            if (key==temp->key) return temp->value;
+            temp= temp->next;
+        }
+        return -1;
+    }
+
     void printTable()
     {
         cout << "Table: " << endl;
@@ -79,10 +90,14 @@ int main()
     newHT->set("pies", 3);
     newHT->set("kot", 4);
     newHT->set("ryba", 5);
-    newHT->set("krowa", 19);
+    newHT->set("krowa", 18);
     newHT->set("sowa", 3);
     newHT->set("malpa", 4);
     newHT->set("skorpion", 5);
     newHT->set("koczkodan", 19);
     newHT->printTable();
+
+    cout << "GET krowa " << newHT->get("krowa") << endl;
+    cout << "GET lampa " << newHT->get("lampa") << endl;
+    cout << "GET koczkodan " << newHT->get("koczkodan") << endl;
 }
