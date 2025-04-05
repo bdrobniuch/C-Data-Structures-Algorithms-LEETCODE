@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -82,6 +83,18 @@ public:
         }
         cout << endl;
     }
+
+    vector<string> keys() {
+        vector<string> keysStr = {};
+        for (Node* nodePtr : dataMap){
+            while (nodePtr) {
+                keysStr.push_back(nodePtr->key);
+                nodePtr= nodePtr->next;
+            }
+        }
+        return keysStr;
+    }
+    
 };
 
 int main()
@@ -100,4 +113,9 @@ int main()
     cout << "GET krowa " << newHT->get("krowa") << endl;
     cout << "GET lampa " << newHT->get("lampa") << endl;
     cout << "GET koczkodan " << newHT->get("koczkodan") << endl;
+    vector<string> keys = newHT->keys();
+    for (string s : keys) {
+        cout << s  << ", " << endl;
+    }
+  
 }
