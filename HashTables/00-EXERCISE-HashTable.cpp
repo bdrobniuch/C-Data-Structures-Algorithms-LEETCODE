@@ -22,6 +22,15 @@ class HashTable {
         Node* dataMap[SIZE];
     public:
 
+    int hash(string key) {
+        int hash=0;
+        for (int i = 0; i<key.length(); i++){
+            int asciValue = int(key[i]);
+            hash= (hash+ asciValue * 23) % SIZE;
+        }
+        return hash;
+    }
+
     void printTable() {
         cout<< "Table: ";
         for (int i= 0; i< SIZE; i++)
