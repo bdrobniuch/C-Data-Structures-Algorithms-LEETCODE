@@ -34,6 +34,13 @@ class BinarySearchTree {
         if (node->right) printNode(node->right);
     }
 
+    bool containsBelowNode(Node* node, int value){
+        if (!node) return false;
+        if (node->value== value) return true;
+        if (value < node->value) return containsBelowNode(node->left, value);
+        else return containsBelowNode(node->right, value); 
+    }
+
     public:
     Node* root;
 
@@ -78,6 +85,11 @@ class BinarySearchTree {
         printNode(root);
     }
 
+    bool contains(int value) {
+        
+        return containsBelowNode(root, value);
+    }
+
 };
 
 
@@ -97,6 +109,9 @@ int main () {
  newBST->insert2(15);
  newBST->insert2(7);
     newBST->printTree();
+    cout << "Cointains 27 " << newBST->contains(27) << endl;
+    cout << "Cointains 19 " << newBST->contains(19) << endl;
+    cout << "Cointains 1 " << newBST->contains(1) << endl;
 }
 
 
