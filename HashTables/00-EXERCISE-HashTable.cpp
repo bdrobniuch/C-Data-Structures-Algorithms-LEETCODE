@@ -58,14 +58,14 @@ public:
 
     void printTable()
     {
-        cout << "Table: ";
+        cout << "Table: " << endl;
         for (int i = 0; i < SIZE; i++)
         {
-            cout << "[" << i << "] ";
+            cout << "[" << i << "] " << endl;
             Node *n = dataMap[i];
             while (n)
             {
-                cout << "Key: " << n->key << " Value: " << n->value << " ";
+                cout << "   Key: " << n->key << " Value: " << n->value << " " << endl;
                 n = n->next;
             }
         }
