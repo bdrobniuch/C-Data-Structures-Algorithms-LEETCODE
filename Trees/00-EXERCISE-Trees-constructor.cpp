@@ -47,6 +47,33 @@ class BinarySearchTree {
 
     }
 
+    bool insert2(int value) {
+        Node* newNode = new Node(value);
+        if (!root) {
+            root = newNode;
+            return true;
+        } 
+        Node* temp = root;
+        while (true) {
+            if (newNode->value == temp->value) return false;
+            if (newNode->value < temp->value) 
+            {   
+                if (!temp->left) {
+                    temp->left= newNode;
+                    return true;
+                }
+                    temp=temp->left;
+            }
+                else {
+                    if (!temp->right) {
+                        temp->right= newNode;
+                        return true;
+                    }
+                    temp= temp->right;
+                }
+        }
+    }
+
     void printTree () {
         printNode(root);
     }
@@ -57,12 +84,18 @@ class BinarySearchTree {
 int main () {
     BinarySearchTree* newBST =  new BinarySearchTree();
     cout << "Root " << newBST->root << endl;
-    newBST->insert(4);
-    newBST->insert(11);
-    newBST->insert(1);
-    newBST->insert(19);
-    newBST->insert(15);
-    newBST->insert(7);
+ //   newBST->insert(4);
+ //   newBST->insert(11);
+ //   newBST->insert(1);
+ //   newBST->insert(19);
+ //   newBST->insert(15);
+ //   newBST->insert(7);
+ newBST->insert2(4);
+ newBST->insert2(11);
+ newBST->insert2(1);
+ newBST->insert2(19);
+ newBST->insert2(15);
+ newBST->insert2(7);
     newBST->printTree();
 }
 
