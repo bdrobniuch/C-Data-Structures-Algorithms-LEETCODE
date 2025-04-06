@@ -38,16 +38,12 @@ public:
             return;
 
         int childIndex = heap.size() - 1;
-        int parentIndex = 0;
-        while (childIndex != 0)
+      
+        while (childIndex != 0 && heap[parent(childIndex)] < heap[childIndex])
         {
 
-            parentIndex = parent(childIndex);
-
-            if (heap[parentIndex] < heap[childIndex])
-                swap(parentIndex, childIndex);
-
-            childIndex = parentIndex;
+            swap(parent(childIndex), childIndex);
+            childIndex = parent(childIndex);
         }
     }
 
