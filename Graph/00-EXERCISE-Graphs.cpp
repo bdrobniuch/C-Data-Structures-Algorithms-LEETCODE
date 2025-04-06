@@ -35,9 +35,10 @@ public:
 
     bool removeVertex(string vertex) {
         if (adjList.count(vertex) == 0) return false;
+        auto haveWith = adjList.at(vertex);
         adjList.erase(vertex);
-        for (auto &v : adjList) {
-            v.second.erase(vertex);
+        for (auto s : haveWith) {
+            adjList.at(s).erase(vertex);
         }
         return true;
     }
