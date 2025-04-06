@@ -64,13 +64,12 @@ public:
 int main()
 {
     Heap heap;
-    heap.insert(4);
-    heap.insert(2);
-    heap.insert(5);
-    heap.insert(1);
-    heap.insert(7);
-    heap.insert(1);
-    heap.insert(9);
+    heap.insert(99);
+    heap.insert(72);
+    heap.insert(61);
+    heap.insert(58);
+    heap.insert(100);
+
 
     heap.print();
 }
