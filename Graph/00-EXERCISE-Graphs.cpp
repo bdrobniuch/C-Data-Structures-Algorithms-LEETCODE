@@ -19,6 +19,8 @@ public:
     }
 
     bool addEdge(string vertex1, string vertex2) {
+        if (adjList.count(vertex1) == 0 || adjList.count(vertex2) == 0) return false; 
+
         adjList[vertex1].insert(vertex2);
         adjList[vertex2].insert(vertex1);
         return true;
