@@ -17,6 +17,14 @@ public:
         adjList.insert(std::make_pair(s, unordered_set<std::string>()));
         return true;
     }
+
+    bool addEdge(string vertex1, string vertex2) {
+        adjList[vertex1].insert(vertex2);
+        adjList[vertex2].insert(vertex1);
+        return true;
+    }
+
+
     void print()
     {
         for (auto k : adjList)
@@ -36,6 +44,11 @@ int main () {
     graph.addVertex("B");
     graph.addVertex("C");
     graph.addVertex("D");
+
+    graph.addEdge("A","B");
+    graph.addEdge("B","C");
+    graph.addEdge("C","D");
+    graph.addEdge("D","A");
 
     graph.print();
 }
