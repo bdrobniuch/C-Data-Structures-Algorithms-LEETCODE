@@ -14,4 +14,15 @@ class Heap {
     int rightChild(int index) {
         return 2*index+2;
     }
+
+    int parent(int index) {
+        return (index -1) /2;
+    }
+
+    void swap (int index1, int index2) {
+        int temp = heap[index1];
+        heap[index1] = heap[index2];
+        heap[index2] = temp;
+
+    }
 };
