@@ -33,6 +33,15 @@ public:
         return true;
     }
 
+    bool removeVertex(string vertex) {
+        if (adjList.count(vertex) == 0) return false;
+        adjList.erase(vertex);
+        for (auto &v : adjList) {
+            v.second.erase(vertex);
+        }
+        return true;
+    }
+
 
     void print()
     {
@@ -44,6 +53,7 @@ public:
             }
             cout << "]" <<endl;
         }
+        cout<<endl;
     }
 };
 
@@ -55,11 +65,14 @@ int main () {
     graph.addVertex("D");
 
     graph.addEdge("A","B");
-    graph.addEdge("B","C");
+    graph.addEdge("B","D");
+    graph.addEdge("A","C");
     graph.addEdge("C","D");
-    graph.addEdge("D","A");
+    graph.addEdge("A","D");
+    
+    graph.print();
 
-    graph.removeEdge("A","B");
+    graph.removeVertex("D");
 
     graph.print();
 }
