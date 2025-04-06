@@ -38,13 +38,30 @@ public:
             return;
 
         int childIndex = heap.size() - 1;
-      
+
         while (childIndex != 0 && heap[parent(childIndex)] < heap[childIndex])
         {
 
             swap(parent(childIndex), childIndex);
             childIndex = parent(childIndex);
         }
+    }
+
+    int remove()
+    {
+        if (heap.empty())
+            return INT_MIN;
+        int maxValue = heap.front();
+
+        if (heap.size() == 1)
+            heap.pop_back();
+        else
+        {
+            heap[0]= heap.back();
+            heap.pop_back();
+        }
+
+        return maxValue;
     }
 
     void print()
@@ -65,7 +82,6 @@ int main()
     heap.insert(61);
     heap.insert(58);
     heap.insert(100);
-
 
     heap.print();
 }
