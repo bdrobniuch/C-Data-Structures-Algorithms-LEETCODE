@@ -64,6 +64,12 @@ public:
         return maxValue;
     }
 
+    void sinkDown(int index) {
+        int leftC = leftChild(index);
+        int rightC = rightChild(index);
+        
+    }
+
     void print()
     {
         for (auto i : heap)
