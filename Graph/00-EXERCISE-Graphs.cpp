@@ -26,6 +26,13 @@ public:
         return true;
     }
 
+    bool removeEdge(string vertex1, string vertex2) {
+        if (adjList.count(vertex1) == 0 || adjList.count(vertex2) == 0) return false; 
+        adjList[vertex1].erase(vertex2);
+        adjList[vertex2].erase(vertex1);
+        return true;
+    }
+
 
     void print()
     {
@@ -51,6 +58,8 @@ int main () {
     graph.addEdge("B","C");
     graph.addEdge("C","D");
     graph.addEdge("D","A");
+
+    graph.removeEdge("A","B");
 
     graph.print();
 }
