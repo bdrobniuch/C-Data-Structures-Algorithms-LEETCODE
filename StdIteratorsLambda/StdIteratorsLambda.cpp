@@ -11,8 +11,8 @@ class Person
 public:
     string name;
     int height;
-    friend ostream& operator<<(ostream& os, const Person& p);
-
+    int age = 18;
+    friend ostream &operator<<(ostream &os, const Person &p);
 };
 
 std::ostream &operator<<(std::ostream &os, const Person &p)
@@ -63,14 +63,21 @@ int main()
 
     l();
 
-    cout <<endl;
+    cout << endl;
 
     vector<Person> persons = {{"Adam", 33}, {"Michal", 41}, {"Kasia", 12}, {"Alicja", 32}};
-    std::for_each(persons.begin(), persons.end(), [](auto i) { cout << i << endl; });
+    std::for_each(persons.begin(), persons.end(), [](auto i)
+                  { cout << i << endl; });
 
-    std::sort(persons.begin(), persons.end(), [](auto a, auto b){return a.height > b.height;});
+    std::sort(persons.begin(), persons.end(), [](auto a, auto b)
+              { return a.height > b.height; });
 
-    cout <<endl;
+    cout << endl;
 
-    std::for_each(persons.begin(), persons.end(), [](auto i) { cout << i << endl; });
+    std::for_each(persons.begin(), persons.end(), [](auto i)
+                  { cout << i << endl; });
+
+    if (std::any_of(persons.begin(), persons.end(), [](auto i)
+                    { return i.height >= 18; }))
+        cout << "wszyscy pelnoletni" << endl;
 }
