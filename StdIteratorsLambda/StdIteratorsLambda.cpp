@@ -21,6 +21,18 @@ std::ostream &operator<<(std::ostream &os, const Person &p)
     return os;
 }
 
+void reverseV(vector<int> &vr) {
+    if (vr.size()<2) return;
+    auto vb=  vr.begin();
+    auto ve= vr.end() -1;
+    while (vb <= ve) {
+        swap(*vb,*ve);
+        vb++;
+        ve--;
+    }
+        
+}
+
 int main()
 {
     vector<int> v({1, 0, 3, 0, 5, 0, 7, 8, 9});
@@ -80,4 +92,25 @@ int main()
     if (std::any_of(persons.begin(), persons.end(), [](auto i)
                     { return i.height >= 18; }))
         cout << "wszyscy pelnoletni" << endl;
+
+    cout << endl;
+    cout << endl;
+
+    vector<int> vr({1, 2, 3, 4, 5, 6, 7, 8, 9});
+
+    std::vector<int>::const_iterator ci = vr.begin();
+    while (ci != vr.end()){
+        cout << *ci << ", " ;
+        ci++;
+    }
+    cout << endl;
+
+    reverseV(vr);
+
+     ci = vr.begin();
+    while (ci != vr.end()){
+        cout << *ci << ", " ;
+        ci++;
+    }
+    cout << endl;
 }
