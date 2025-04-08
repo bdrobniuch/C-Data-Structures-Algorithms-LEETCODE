@@ -65,9 +65,9 @@ public:
     }
 
     void sinkDown(int index) {
-        int leftC = leftChild(index);
-        int rightC = rightChild(index);
-        
+        int leftIndex = leftChild(index);
+        int rightIndex = rightChild(index);
+
     }
 
     void print()
